@@ -1,0 +1,29 @@
+
+# 读写文件
+
+
+f = open('score.txt','r',encoding= 'UTF-8')
+
+scoreList = f.readlines()
+results=[] # 初始化一个空的列表
+print(scoreList)
+
+for i in scoreList:
+    print(i)
+    data = i.split(' ')# 要将原来的字符串用空格分开，如果不给split()函数传值，就不知道怎么分割
+    print(data[0],data[1])# 打印看看我看看了我分出的格式对不对
+    sum = 0
+    for da in data[1:]:
+        da_int = int(da)#分出的各个值也都是字符串格式，所以需要将他们转成int类型
+        sum+=da_int
+    result = '%s\t:%d\n'%(data[0],sum)#之前学C语言的时候，见过类似的
+
+    results.append(result)
+
+for result in results:
+    print(result) #将结果打印出来看看有没有错。
+
+
+output = open('result.txt','w')
+output.writelines(results) # 只有writelines()函数，但是没有writeline()函数
+output.close()# 将输出关闭
